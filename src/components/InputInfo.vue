@@ -23,7 +23,7 @@
             <span>这里是可以公开的内容</span>
           </div>
           <div>
-            <el-input type="textarea" :rows="8" placeholder="请输入内容" v-model="openContent">
+            <el-input type="textarea" :rows="12" placeholder="请输入内容" v-model="openContent">
             </el-input>
           </div>
         </el-card>
@@ -34,7 +34,7 @@
             <span>这里是不能公开的内容</span>
           </div>
           <div>
-            <el-input type="textarea" :rows="8" placeholder="请输入内容" v-model="closeContent">
+            <el-input type="textarea" :rows="12" placeholder="请输入内容" v-model="closeContent">
             </el-input>
           </div>
         </el-card>
@@ -60,19 +60,25 @@
     },
     methods: {
       nextOne() {
-        storage.add(this.round, this.openContent, this.closeContent);
+        storage.add(this.round,
+          this.processInputContent(this.openContent),
+          this.processInputContent(this.closeContent)
+        );
 
         this.openContent = '';
         this.closeContent = '';
 
-        this.$notify({
-          title: '成功',
-          message: '保存成功啦~',
+        this.$message({
+          message: '保存成功啦~~',
           type: 'success'
         });
       },
       finishInput() {
         this.$router.push('/review');
+      },
+      // 处理换行符
+      processInputContent(content) {
+        return content.replace(/\n/g, '<br/>').replace(/\s/g, ' ');
       }
     }
   };
