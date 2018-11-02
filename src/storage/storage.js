@@ -1,4 +1,5 @@
 // 这里封装了 localStorage.drama_game 的使用
+import { decrypt, encrypt } from './secret';
 
 const key = 'drama_game';
 
@@ -71,7 +72,12 @@ class DramaGameStorage {
   }
 
   _get() {
-    const str = localStorage.getItem(key);
+    const saved = localStorage.getItem(key);
+    if (!saved) {
+      return {};
+    }
+
+    const str = decrypt(saved);
     try {
       return JSON.parse(str);
     } catch (_) {
@@ -80,7 +86,7 @@ class DramaGameStorage {
   }
 
   _set(obj) {
-    localStorage.setItem(key, JSON.stringify(obj));
+    localStorage.setItem(key, encrypt(JSON.stringify(obj)));
   }
 }
 

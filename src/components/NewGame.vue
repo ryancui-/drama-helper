@@ -2,7 +2,7 @@
   <div class="new-game-wrapper">
     <el-button type="primary" @click="initNewGame">新游戏</el-button>
     <el-button type="primary" @click="resumeOldGame"
-               v-if="gameData && gameData.round > 1 && gameData.op && gameData.op.length > 0">
+               v-if="gameData && gameData.op && gameData.op.length > 0 && gameData.op[0].length > 0">
       继续游戏
     </el-button>
   </div>
