@@ -1,7 +1,7 @@
 <template>
   <div class="input-info-wrapper">
     <div class="top-panel">
-      <div class="round">
+      <div class="title">
         目前是第 {{round}} 回合
       </div>
       <div class="btns">
@@ -79,14 +79,5 @@
 </script>
 
 <style>
-  .top-panel {
-    display: flex;
-    padding: 15px 0;
-    align-items: center;
-    justify-content: space-between;
-  }
 
-  .round {
-    font-size: 28px;
-  }
 </style>

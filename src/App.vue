@@ -22,4 +22,15 @@ export default {
     box-sizing: border-box;
     padding: 24px;
   }
+
+  .top-panel {
+    display: flex;
+    padding: 15px 0;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .top-panel > .title {
+    font-size: 28px;
+  }
 </style>
