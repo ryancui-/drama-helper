@@ -1,5 +1,8 @@
 import Vue from 'vue';
-import Element from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
+import { Button, Card, Col, Input, Row } from 'element-ui';
 
-Vue.use(Element);
+Vue.use(Input);
+Vue.use(Button);
+Vue.use(Card);
+Vue.use(Row);
+Vue.use(Col);

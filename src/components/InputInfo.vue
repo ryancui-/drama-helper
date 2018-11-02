@@ -44,6 +44,7 @@
 </template>
 
 <script>
+  import { Message } from 'element-ui';
   import storage from '@/storage/storage';
 
   export default {
@@ -68,7 +69,7 @@
         this.openContent = '';
         this.closeContent = '';
 
-        this.$message({
+        Message({
           message: '保存成功啦~~',
           type: 'success'
         });
