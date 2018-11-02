@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    123
+    <router-view></router-view>
   </div>
 </template>
 
@@ -16,5 +16,10 @@ export default {
     height: 100%;
     margin: 0;
     padding: 0;
+  }
+
+  #app {
+    box-sizing: border-box;
+    padding: 24px;
   }
 </style>
