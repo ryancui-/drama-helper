@@ -16,7 +16,7 @@ class DramaGameStorage {
   }
 
   // 向某回合添加操作
-  add(round, openContent, closeContent) {
+  add(round, operation) {
     const obj = this._get();
     const op = obj.op;
     const idx = Number(round - 1);
@@ -24,14 +24,12 @@ class DramaGameStorage {
       op[idx] = [];
     }
 
-    op[idx].push({
-      open: openContent,
-      close: closeContent
-    });
+    op[idx].push(operation);
 
     this._set(obj);
   }
 
+  // 获取当前回合
   getCurrentRound() {
     const obj = this._get();
     return obj.round;
@@ -49,18 +47,6 @@ class DramaGameStorage {
     const idx = Number(round - 1);
 
     return op[idx] || [];
-  }
-
-  // 拿到某一回合的公开数据
-  getOpenByRound(round) {
-    const data = this.getByRound(round);
-    return data.map(op => op.open);
-  }
-
-  // 拿到某一回合的非公开数据
-  getCloseByRound(round) {
-    const data = this.getByRound(round);
-    return data.map(op => op.close);
   }
 
   // 进入下一回合

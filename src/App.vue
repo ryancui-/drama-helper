@@ -39,11 +39,19 @@ export default {
     margin: 5px 0;
   }
 
-  .operation > label {
-    width: 30px;
+  .operation > .index {
+    width: 40px;
   }
 
-  .operation > span {
+  .operation > .composer {
+    width: 150px;
+  }
+
+  .operation > .dealer {
+    width: 200px;
+  }
+
+  .operation > .desc {
     flex: 1;
   }
 </style>
