@@ -19,7 +19,9 @@
         <span>公开信息</span>
       </div>
       <div>
-        <p v-for="(info, index) in openData" :key="index" v-html="info">
+        <p v-for="(info, index) in openData" :key="index" class="operation">
+          <label>{{index + 1}}</label>
+          <span v-html="info"></span>
         </p>
       </div>
     </el-card>
@@ -35,7 +37,8 @@
         return storage.getCurrentRound();
       },
       openData() {
-        return storage.getOpenByRound(this.round);
+        // 这里需要打乱排序
+        return storage.getOpenByRound(this.round).sort(() => Math.random() - 0.5);
       }
     },
     methods: {

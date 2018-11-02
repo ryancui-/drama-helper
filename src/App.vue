@@ -33,4 +33,17 @@ export default {
   .top-panel > .title {
     font-size: 28px;
   }
+
+  .operation {
+    display: flex;
+    margin: 5px 0;
+  }
+
+  .operation > label {
+    width: 30px;
+  }
+
+  .operation > span {
+    flex: 1;
+  }
 </style>

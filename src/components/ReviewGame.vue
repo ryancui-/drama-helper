@@ -17,10 +17,18 @@
       </div>
       <el-row :gutter="24">
         <el-col :span="12">
-          <p v-for="(text, idx) in extractOpen(op)" :key="idx">{{text}}</p>
+          <h4 style="margin: 0 0 10px 0;">公开</h4>
+          <p v-for="(text, idx1) in extractOpen(op)" :key="idx1" class="operation">
+            <label>{{idx1 + 1}}</label>
+            <span v-html="text"></span>
+          </p>
         </el-col>
         <el-col :span="12">
-          <p v-for="(text, idx) in extractClose(op)" :key="idx">{{text}}</p>
+          <h4 style="margin: 0 0 10px 0;">非公开</h4>
+          <p v-for="(text, idx2) in extractClose(op)" :key="idx2" class="operation">
+            <label>{{idx2 + 1}}</label>
+            <span v-html="text"></span>
+          </p>
         </el-col>
       </el-row>
     </el-card>
@@ -38,10 +46,10 @@
     },
     methods: {
       extractOpen(op) {
-        return op.map(i => i.open);
+        return op.map(i => i.open).filter(i => i);
       },
       extractClose(op) {
-        return op.map(i => i.close);
+        return op.map(i => i.close).filter(i => i);
       },
       backIndex() {
         storage.init();
