@@ -44,7 +44,6 @@
 </template>
 
 <script>
-  import global from '@/store/store';
   import storage from '@/storage/storage';
 
   export default {
@@ -56,7 +55,7 @@
     },
     computed: {
       round() {
-        return global.currentRound;
+        return storage.getCurrentRound();
       }
     },
     methods: {

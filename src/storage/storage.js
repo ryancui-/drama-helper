@@ -3,25 +3,37 @@
 const key = 'drama_game';
 
 class DramaGameStorage {
+  constructor() {
+  }
+
   // 清空之前的数据，并重新初始化
   init() {
-    this._set([]);
+    this._set({
+      round: 1,
+      op: [[]]
+    });
   }
 
   // 向某回合添加操作
   add(round, openContent, closeContent) {
     const obj = this._get();
+    const op = obj.op;
     const idx = Number(round - 1);
-    if (!obj[idx] || !Array.isArray(obj[idx])) {
-      obj[idx] = [];
+    if (!op[idx] || !Array.isArray(op[idx])) {
+      op[idx] = [];
     }
 
-    obj[idx].push({
+    op[idx].push({
       open: openContent,
       close: closeContent
     });
 
     this._set(obj);
+  }
+
+  getCurrentRound() {
+    const obj = this._get();
+    return obj.round;
   }
 
   // 拿到全部数据
@@ -32,9 +44,10 @@ class DramaGameStorage {
   // 拿到某一回合的所有数据
   getByRound(round) {
     const obj = this._get();
+    const op = obj.op;
     const idx = Number(round - 1);
 
-    return obj[idx];
+    return op[idx] || [];
   }
 
   // 拿到某一回合的公开数据
@@ -47,6 +60,14 @@ class DramaGameStorage {
   getCloseByRound(round) {
     const data = this.getByRound(round);
     return data.map(op => op.close);
+  }
+
+  // 进入下一回合
+  nextRound() {
+    const obj = this._get();
+    obj.round = obj.round + 1;
+    obj.op.push([]);
+    this._set(obj);
   }
 
   _get() {
